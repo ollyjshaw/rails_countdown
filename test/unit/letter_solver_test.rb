@@ -8,11 +8,13 @@ class LettersSolverTest < Test::Unit::TestCase
     @solver = LettersSolver.new
   end
 
+  #from 8 out of ten cats
   def test_can_solve_connundrum
     @solver.solve("randybush")
     assert_equal('husbandry', @solver.connundrum)
   end
 
+  #from 8 out of ten cats
   def test_can_solve_connundrum2
     @solver.solve("neatknob")
     assert_equal('banknote', @solver.connundrum)
