@@ -1,5 +1,6 @@
 RailsCountdown::Application.routes.draw do
   get "conundrum/index"
+  post 'conundrum/solve' => 'conundrum#solve'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

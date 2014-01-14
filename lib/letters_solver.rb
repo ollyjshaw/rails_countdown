@@ -13,12 +13,13 @@ class LettersSolver
   end
 
   def connundrum
+    best_answer = @answers.first
     @answers.each do |answer|
-      if answer.length>7
-        puts "Eight Letter Answer! #{answer}    "
-        return answer
+      if answer.length>best_answer.length
+        best_answer = answer
       end
     end
+    best_answer
   end
 
   private
