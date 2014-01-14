@@ -20,4 +20,10 @@ class LettersSolverTest < Test::Unit::TestCase
     assert_equal('banknote', @solver.connundrum)
   end
 
+  #from 8 out of ten cats
+  def test_can_solve_conundrum3
+    @solver.solve("litesuck")
+    assert_equal('luckiest', @solver.connundrum)
+  end
+
 end

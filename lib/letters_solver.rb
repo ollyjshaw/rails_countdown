@@ -39,7 +39,7 @@ class LettersSolver
   end
 
   def read_file
-    file_name = '../2of12.txt'
+    file_name = '2of12.txt'
     @dict = IO.readlines(file_name).map(&:chomp)
   end
 
