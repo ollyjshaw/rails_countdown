@@ -1,15 +1,15 @@
 require_relative '../lib/letters_node'
+
+
 class LettersSolver
+
   def initialize
-    @letter_tree_root = MyMod::LettersNode.new_root
-    read_file
-    organise_data
     @answers = SortedSet.new
   end
 
   def solve(letters)
     @answers = SortedSet.new
-    recursive_solve('', letters, @letter_tree_root)
+    recursive_solve('', letters, LettersSolver.letters_tree_root)
   end
 
   def connundrum
@@ -20,6 +20,30 @@ class LettersSolver
       end
     end
     best_answer
+  end
+
+    def self.read_file
+      file_name = '2of12.txt'
+      @dict = IO.readlines(file_name).map(&:chomp)
+    end
+
+    def self.organise_data
+      @dict.each do |line|
+        tree_position = self.letters_tree_root
+        clean_line = line.chomp
+        clean_line.chars do |char|
+          tree_position = tree_position.new_or_existing_child char
+        end
+        tree_position.is_word = true
+      end
+    end
+
+  def self.letters_tree_root=(root)
+     @letter_tree_root = root
+  end
+
+  def self.letters_tree_root
+    @letter_tree_root
   end
 
   private
@@ -38,19 +62,9 @@ class LettersSolver
     end
   end
 
-  def read_file
-    file_name = '2of12.txt'
-    @dict = IO.readlines(file_name).map(&:chomp)
-  end
 
-  def organise_data
-    @dict.each do |line|
-      tree_position = @letter_tree_root
-      clean_line = line.chomp
-      clean_line.chars do |char|
-        tree_position = tree_position.new_or_existing_child char
-      end
-      tree_position.is_word = true
-    end
-  end
 end
+
+LettersSolver.letters_tree_root = MyMod::LettersNode.new_root
+LettersSolver.read_file
+LettersSolver.organise_data
