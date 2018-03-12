@@ -102,7 +102,7 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.53)
-    uglifier (4.1.6)
+    uglifier (4.1.7)
       execjs (>= 0.3.0, < 3)
 
 PLATFORMS
